@@ -4,13 +4,13 @@
 
 
 Phase1:
-Driver- Aniruddh Balram
-Navigator-Mayank Sharma
-Design Keeper- Joshua Gomez
+Driver- Aniruddh Balram,
+Navigator-Mayank Sharma,
+Design Keeper- Joshua Gomes
 
 Phase2:
-Driver- Joshua Gomez
-Navigator-Aniruddh Balram
+Driver- Joshua Gomes,
+Navigator-Aniruddh Balram,
 Design Keeper-Mayank Sharma
 
 
