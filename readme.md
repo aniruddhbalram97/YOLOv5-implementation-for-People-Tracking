@@ -3,21 +3,15 @@
 ### Authors and Roles
 
 
-#### Phase1:
-##### Driver- 
-Aniruddh Balram
-##### Navigotor- 
-Mayank Sharma
-##### Design Keeper- 
-Joshua Gomez
+Phase1:
+Driver- Aniruddh Balram
+Navigotor-Mayank Sharma
+Design Keeper- Joshua Gomez
 
-#### Phase2:
-##### Driver- 
-Joshua Gomez
-##### Navigotor- 
-Aniruddh Balram
-##### Design Keeper- 
-Mayank Sharma
+Phase2:
+Driver- Joshua Gomez
+Navigotor-Aniruddh Balram
+Design Keeper-Mayank Sharma
 
 
 ### Introduction
