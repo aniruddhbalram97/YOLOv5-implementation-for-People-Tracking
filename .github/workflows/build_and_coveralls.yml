@@ -35,23 +35,20 @@ jobs:
       
       # Install some system pacakges
       - name: Install packages
-        run: bash ${{github.workspace}}/Code/dependencies.sh
-      # Make build folder and cmake in build
-      - name: Create build folder inside Code directory
-        run: cd ${{github.workspace}}/Code && mkdir build
+        run: bash ${{github.workspace}}/dependencies.sh
 
       # Run CMake to setup compilation flags
       - name: Configure Coverage CMake 
-        run: cmake -D COVERAGE=ON -D CMAKE_BUILD_TYPE=Debug -B ${{github.workspace}}/Code/build 
+        run: cmake -D COVERAGE=ON -D CMAKE_BUILD_TYPE=Debug -B ${{github.workspace}}/build 
       
       # Compile and executables
       - name: Build Coverage
-        working-directory: ${{github.workspace}}/Code/build
+        working-directory: ${{github.workspace}}/build
         run: make
 
       # Run test suite and compute code coverage
       - name: Run Test Coverage
-        working-directory: ${{github.workspace}}/Code/build
+        working-directory: ${{github.workspace}}/build
         run: make code_coverage
       
       # Upload coverage result to Coverage.io 
@@ -59,4 +56,4 @@ jobs:
         uses: coverallsapp/github-action@1.1.3
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          path-to-lcov: ${{github.workspace}}/Code/build/coverage.info.cleaned
+          path-to-lcov: ${{github.workspace}}/build/coverage.info.cleaned
