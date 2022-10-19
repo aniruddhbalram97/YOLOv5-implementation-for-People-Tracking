@@ -1,3 +1,6 @@
+[![Build Status](https://github.com/aniruddhbalram97/ENPM808X---Midterm-Project/actions/workflows/build_and_coveralls.yml/badge.svg)](https://github.com/aniruddhbalram97/ENPM808X---Midterm-Project/actions/workflows/build_and_coveralls.yml)
+[![Coverage Status](https://coveralls.io/repos/github/aniruddhbalram97/ENPM808X---Midterm-Project/badge.svg?branch=development)](https://coveralls.io/github/aniruddhbalram97/ENPM808X---Midterm-Project/?branch=development
+
 ### Authors and Roles
 Phase1:
 Driver- Aniruddh Balram,
