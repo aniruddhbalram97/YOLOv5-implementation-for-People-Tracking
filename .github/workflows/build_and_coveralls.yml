@@ -36,6 +36,9 @@ jobs:
       # Install some system pacakges
       - name: Install packages
         run: bash ${{github.workspace}}/Code/dependencies.sh
+      # Make build folder and cmake in build
+      - name: Create build folder inside Code directory
+        run: cd ${{github.workspace}}/Code && mkdir build
 
       # Run CMake to setup compilation flags
       - name: Configure Coverage CMake 
