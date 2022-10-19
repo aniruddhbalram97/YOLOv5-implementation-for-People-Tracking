@@ -35,7 +35,8 @@ jobs:
       
       # Install some system pacakges
       - name: Install packages
-        run: bash ${{github.workspace}}/dependencies.sh
+      #  run: bash ${{github.workspace}}/dependencies.sh
+        run: gcov --version && gcc --version
 
       # Run CMake to setup compilation flags
       - name: Configure Coverage CMake 
