@@ -1,5 +1,11 @@
+## Midterm - Human Object Detection
+# C++ Boilerplate Badges
 [![Build Status](https://github.com/aniruddhbalram97/ENPM808X---Midterm-Project/actions/workflows/build_and_coveralls.yml/badge.svg)](https://github.com/aniruddhbalram97/ENPM808X---Midterm-Project/actions/workflows/build_and_coveralls.yml)
-[![Coverage Status](https://coveralls.io/repos/github/aniruddhbalram97/ENPM808X---Midterm-Project/badge.svg?branch=development)](https://coveralls.io/github/aniruddhbalram97/ENPM808X---Midterm-Project/?branch=development)
+
+[![Coverage Status](https://coveralls.io/repos/github/aniruddhbalram97/ENPM808X---Midterm-Project/badge.svg?branch=master)](https://coveralls.io/github/aniruddhbalram97/ENPM808X---Midterm-Project?branch=master)
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT) 
+
 
 ### Authors and Roles
 Phase1:
@@ -39,6 +45,21 @@ IB: 1.113 Implement cpplint and cppcheck,
 IB: 1.114 Create proper comments and revise old ones, 
 IB: 1.115 Update Cmake, 
 
+### Results
+
+Input frame:
+
+![WhatsApp Image 2022-10-19 at 9 26 58 PM(1)](https://user-images.githubusercontent.com/106330112/196838006-43acb54a-aca2-4058-98d4-3e163d732f37.jpeg)
+
+Humans detected in the frame can be seen below:
+
+
+Output:
+
+![Output](https://user-images.githubusercontent.com/106330112/196838392-56e96d2a-b8b9-4585-b071-a476316717a1.jpeg)
+
+
+
 ### Task completed partially (Might contains errors due to  build method):
 
 IB: 1.108 Create a docs directory with generated Doxygen files, 
@@ -53,6 +74,13 @@ IB: 1.111 URL of a 3 minute (max) video explaining the Phase 1 status of your AP
 Spreadsheet link: https://docs.google.com/spreadsheets/d/1zVApmpAVnc7thu606UrYKJ7nqtlWpkH1Bv99EHn_2Is/edit?usp=sharing 
 
 Sprint Meeting Document Link: https://docs.google.com/document/d/154Ga8EMY9PfcyO2QEEYlObfffHEXi2clT9GDjFAgel4/edit?usp=sharing
+
+### Phase 1 Status video:
+
+
+https://drive.google.com/file/d/1SrriQnXhLH50-QhWuF40HRacuLYLgIPe/view?usp=sharing
+
+
 
 ### Notes
 Doxyfile is found in Code/doc_directory/Doxyfile 
