@@ -45,6 +45,9 @@ IB: 1.113 Implement cpplint and cppcheck,
 IB: 1.114 Create proper comments and revise old ones, 
 IB: 1.115 Update Cmake, 
 
+IB: 1.108 Create a docs directory with generated Doxygen files, 
+IB: 1.109 Create unit tests and test coverage, 
+IB: 1.111 URL of a 3 minute (max) video explaining the Phase 1 status of your API 
 ### Results
 
 Input frame:
@@ -62,12 +65,9 @@ Output:
 
 ### Task completed partially (Might contains errors due to  build method):
 
-IB: 1.108 Create a docs directory with generated Doxygen files, 
 IB: 1.104 Setup Github CI
 ### Task incomplete: 
 
-IB: 1.109 Create unit tests and test coverage, 
-IB: 1.111 URL of a 3 minute (max) video explaining the Phase 1 status of your API 
 
 ### Spreedsheet and Sprint Meeting Document Link
 
@@ -138,6 +138,9 @@ doxygen ./Doxyfile
 Once thats done, two folders will be created html and latex, the html folder has index.html which will have the doxygen data  
 
 Step 4: INPUT parameter in Doxyfile is the files you want to run doxygen on PROJECT_NAME parameter is the name of the title  
+
+### Steps to Run test:
+./test/cpp-test  
 
 ### Steps to Build and Run Demo: 
 ```
