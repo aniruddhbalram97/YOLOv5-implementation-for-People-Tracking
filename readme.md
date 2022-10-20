@@ -162,7 +162,9 @@ bash dependencies.sh
 ```
 ### **Generate Doxygen document:**
 - **Step1:** creates a Doxyfile  
-Doxygen -g  
+```
+Doxygen -g
+```  
 
 - **Step 2:** Edit the Doxyfile (INPUT and PROJECT_NAME)  
 
@@ -184,15 +186,6 @@ mkdir build && cmake .. && make
 
 ### **Steps to Build and Run Demo:** 
 ```
-# Create build directory and switch into it
-mkdir -p build && cd build
-
-# Configure
-cmake  ../opencv
-
-#Build
-cmake --build .
-
 cd <directory_of_repo>
 bash run_detector.sh
 ```
