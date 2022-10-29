@@ -33,8 +33,8 @@ namespace ODConstants {
     cv::Scalar B = cv::Scalar(0, 0, 255);  /// blue-color
     cv::Scalar BLACK = cv::Scalar(0, 0, 0);  /// black-color
     cv::Scalar WHITE = cv::Scalar(255, 255, 255);  /// white-color
-    const double F_SCALE = 1;  /// font-scale
+    const double F_SCALE = 0.5;  /// font-scale
     const int F_STYLE = cv::FONT_HERSHEY_SIMPLEX;  /// font-style
-    const int F_THICKNESS = 1;  /// font-thickness
+    const double F_THICKNESS = 0.2;  /// font-thickness
 }  // namespace ODConstants
 #endif  // INCLUDE_CONSTANTS_HPP_

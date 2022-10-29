@@ -164,25 +164,43 @@ const std::vector<std::string> &name_of_class) {
     ODConstants::THRES_NMS, id_nms);
     std::cout<< "Number of Bounding boxes after NMS: "
     << id_nms.size() << std::endl;
+    int human_id = 1; 
     for (int i = 0; i < static_cast<int>(id_nms.size()); i++) {
         if (name_of_class[ids[id_nms[i]]] == "person") {
+        /// gives each bounding-box
         cv::Rect bounding_box = bounding_boxes[id_nms[i]];
         int posLeft = bounding_box.x;
         int posTop = bounding_box.y;
         int width_of_box = bounding_box.width;
         int height_of_box = bounding_box.height;
+        /// displaying robot-coordinate system
+        robotCoordinateConversion(bounding_box, human_id);
         /// drawing bounding box
         cv::rectangle(image_in, cv::Point(posLeft, posTop),
         cv::Point(posLeft + width_of_box, posTop + height_of_box),
-        ODConstants::B, 3*ODConstants::F_THICKNESS);
+        ODConstants::B, 2*ODConstants::F_THICKNESS);
         std::string label_value = name_of_class[ids[id_nms[i]]] +
-        cv::format("%.1f", confidence_values[id_nms[i]]);
+        cv::format("%.1f", confidence_values[id_nms[i]]) + 
+        " id:" + std::to_string(human_id);
         labelBox(image_in, label_value, posTop, posLeft);
+        human_id++;
         }
     }
     return image_in;
 }
 
+void HumanObjectDetector::
+robotCoordinateConversion(const cv::Rect &bbox, int human_id) {
+double depth = focal_length * (avg_height_of_person/bbox.height);
+double pixel_to_cm_ratio = avg_height_of_person/bbox.height;
+std::cout << "The Robot Coordinates" << std::endl;
+std::cout << "The person is between with ID:" << human_id<< "(" 
+<< bbox.x * pixel_to_cm_ratio << "," << bbox.y * pixel_to_cm_ratio 
+<< "," << depth * pixel_to_cm_ratio << ") And (" 
+<< (bbox.x + bbox.width) * pixel_to_cm_ratio << "," 
+<< (bbox.y + bbox.height) * pixel_to_cm_ratio << "," 
+<< depth * pixel_to_cm_ratio << ")\n";  
+}
 cv::Mat HumanObjectDetector::
 objectDetectorModel(cv::Mat image_in,
 cv::dnn::Net yolo_model,

@@ -49,6 +49,11 @@ class HumanObjectDetector: public BlobGenerator {
         cv::dnn::Net net;
         std::vector<cv::Mat> detections;
         std::vector<int> id_nms;
+        /// Assuming average height of every human in US is 170.018cm(5'7)
+        const double avg_height_of_person = 170.018;
+        /// Assuming focal length of our camera to be 1053
+        /// https://learnopencv.com/approximate-focal-length-for-webcams-and-cell-phone-cameras/
+        const double focal_length = 1053;
 
  public:
         /**
@@ -97,6 +102,7 @@ class HumanObjectDetector: public BlobGenerator {
         const cv::Mat &image_in,
         const std::vector<cv::Rect> &bounding_boxes,
         const std::vector<std::string> &name_of_class);
+        void robotCoordinateConversion(const cv::Rect &bbox, int human_id);
         cv::Mat objectDetectorModel(cv::Mat image_in,
         cv::dnn::Net yolo_model,
         const std::vector<std::string> &class_list,
