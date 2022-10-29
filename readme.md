@@ -150,16 +150,44 @@ Derived from BlobGenerator by inheritance, the `HumanObjectDetector` class is us
 - opencv-4.x
 - eigen
 - lcov
+- YOLOv5
+- pytorch 1.11
 
-To install dependencies:
 
+Install opencv and opencv_contrib:  
 ```
-# switch to repo directory
-cd <directory_of_repo>
-
-# run bash-script which holds all dependencies
-bash dependencies.sh
+# Install minimal prerequisites (Ubuntu 18.04 as reference)
+sudo apt update && sudo apt install -y cmake g++ wget unzip
+# Download and unpack sources
+wget -O opencv.zip https://github.com/opencv/opencv/archive/4.x.zip
+wget -O opencv_contrib.zip https://github.com/opencv/opencv_contrib/archive/4.x.zip
+unzip opencv.zip
+unzip opencv_contrib.zip
+# Create build directory and switch into it
+mkdir -p build && cd build
+# Configure
+cmake -DOPENCV_EXTRA_MODULES_PATH=../opencv_contrib-4.x/modules ../opencv-4.x
+# Build
+cmake --build .
 ```
+Install YOLOv5 and move model folder:  
+```
+# Clone the repository. 
+git clone https://github.com/ultralytics/YOLOv5
+ 
+cd YOLOv5 # Install dependencies.
+pip install -r requirements.txt
+pip install onnx
+ 
+# Download .pt model.
+wget https://github.com/ultralytics/YOLOv5/releases/download/v6.1/YOLOv5s.pt
+ 
+!python3 export.py --weights YOLOv5s.pt --include onnx
+ 
+#Now move the "models"  from YOLOv5s to the program's repository and replace /app/models 
+```
+
+
 ### **Generate Doxygen document:**
 - **Step1:** creates a Doxyfile  
 ```
