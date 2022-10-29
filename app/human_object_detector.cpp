@@ -251,10 +251,9 @@ while (true) {
     cap >> image_in;
     img = HOD.objectDetectorModel(image_in, yolo_model,
     class_list, file_name);
-    if(test) {
     cv::imshow("Object Detection", img);
     cv::waitKey(25);
-    }
+    
 }
 } else {
     image_in = cv::imread("./../app/traffic.jpg", cv::IMREAD_COLOR);
@@ -262,7 +261,9 @@ while (true) {
     << image_in.size[0];
     img = HOD.objectDetectorModel(image_in, yolo_model,
     class_list, file_name);
+    if(!test) {
     cv::imshow("Object Detection", img);
     cv::waitKey(0);
+    }
 }
 }
