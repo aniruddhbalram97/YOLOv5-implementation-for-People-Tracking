@@ -51,7 +51,7 @@ jobs:
          mv YOLOv5s.onnx ./../app/model/.
          cd ../
          rm -rf YOLOv5/
-        run: echo "ONNX Model completed"
+         echo "ONNX Model completed"
 
       # Run CMake to setup compilation flags
       - name: Configure Coverage CMake 
