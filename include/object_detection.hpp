@@ -124,7 +124,7 @@ class Camera: public HumanObjectDetector {
         cv::Mat image_in;
         cv::Mat img;
  public:
-        void runLiveDetector(bool live);
+        void runLiveDetector(bool live, bool test);
         cv::Mat getImageInput();
 };
 

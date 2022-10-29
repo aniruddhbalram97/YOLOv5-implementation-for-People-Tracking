@@ -16,7 +16,7 @@
 
 TEST(Human_Object_Detector, Check_Image_Dimensions) {
 Camera cam;
-cam.runLiveDetector(false);
+cam.runLiveDetector(false, true);
 cv::Mat image_in = cam.getImageInput();
 EXPECT_EQ(660, image_in.size().height);
 }

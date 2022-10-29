@@ -20,7 +20,7 @@
 
 int main() {
 Camera cam;
-cam.runLiveDetector(false);
+cam.runLiveDetector(false, false);
 return 0;
 }
 

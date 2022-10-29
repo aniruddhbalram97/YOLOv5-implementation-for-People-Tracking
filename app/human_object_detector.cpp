@@ -229,7 +229,7 @@ cv::Mat Camera::getImageInput() {
 return image_in;
 }
 
-void Camera::runLiveDetector(bool live) {
+void Camera::runLiveDetector(bool live, bool test) {
 ifs.open(file_name.c_str());
 if(ifs.is_open()) {
 std::cout << "file " << file_name << " is open" << std::endl;
@@ -251,8 +251,10 @@ while (true) {
     cap >> image_in;
     img = HOD.objectDetectorModel(image_in, yolo_model,
     class_list, file_name);
+    if(test) {
     cv::imshow("Object Detection", img);
     cv::waitKey(25);
+    }
 }
 } else {
     image_in = cv::imread("./../app/traffic.jpg", cv::IMREAD_COLOR);
