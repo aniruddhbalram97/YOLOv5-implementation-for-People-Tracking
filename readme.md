@@ -29,59 +29,83 @@ For human recognition and tracking, we will use the robust YOLOv3 neural network
 
 ## **Diagrams**
 ### **UML Class Diagram:**
-![alt text](./UML_Diagram/Updated_UMLV2/Class_DiagramV2.png)
+![alt text](./UML_Diagram/Updated_UMLV3/Class_DiagramV3.png)
 
 ### **UML Activity Diagram:**
 
-![alt text](./UML_Diagram/Updated_UMLV2/Activity_Diagram.png)
+![alt text](./UML_Diagram/Updated_UMLV3/Activity_DiagramV3.png)
 
 
 ## **Results:**
 The application currently performs well on single images. For demo purposes, we have used image from The Beatles album-art "The Abbey Road":
 ### **Input Frame:**
 
-![WhatsApp Image 2022-10-19 at 9 26 58 PM(1)](https://user-images.githubusercontent.com/106330112/196838006-43acb54a-aca2-4058-98d4-3e163d732f37.jpeg)
+![Input](./app/traffic.jpg)
 
 Humans detected in the frame can be seen below:
 
 ### **Output Frame:**
 The application predicts the main 4 humans as well as the one behind (barely-visible)
 
-![Output](https://user-images.githubusercontent.com/106330112/196838392-56e96d2a-b8b9-4585-b071-a476316717a1.jpeg)
+![Output](./Results/test_result.png)
 
 ## **Tasks complete**
 
-IB: 1.101 Get preprocessing working, 
-IB: 1.102 Get postprocessing working,
-IB: 1.103 Setup coverCV, 
-IB: 1.105 Create an iteration development branch/ development branch, 
-IB: 1.106 Select and add a software license as a file named LICENSE, 
-IB: 1.107 Update UML,
-IB: 1.110 Update readme, 
-IB: 1.112 Create classes for program, 
-IB: 1.113 Implement cpplint and cppcheck, 
-IB: 1.114 Create proper comments and revise old ones, 
-IB: 1.115 Update Cmake, 
-IB: 1.108 Create a docs directory with generated Doxygen files, 
-IB: 1.109 Create unit tests and test coverage, 
-IB: 1.111 URL of a 3 minute (max) video explaining the Phase 1 status of your API 
+**IB: 1.101** Get preprocessing working,
 
-IB. 2. 201 Research how to track an object in a video
-IB. 2. 202 Change "covercv" typo found all over the program
-IB. 2. 203 Update UML diagram
-IB. 2. 204 Implement distance tracker
-IB. 2. 205 Interface Webcam
-IB. 2. 206 Create Camera Class
-IB. 2. 207 Make the program work on other machines 
-IB. 2. 208 Create new test cases
-IB. 2. 209 Update readme
-IB. 2. 211 Make the program detect objects in a video
-IB. 2. 212 URL of a 5 minute (max) video explaining the Phase 2
+**IB: 1.102** Get postprocessing working,
+
+**IB: 1.103** Setup openCV,
+
+**IB: 1.105** Create an iteration development branch/ development branch,
+
+**IB: 1.106** Select and add a software license as a file named LICENSE,
+
+**IB: 1.107** Update UML,
+
+**IB: 1.110** Update readme,
+
+**IB: 1.112** Create classes for program,
+
+**IB: 1.113** Implement cpplint and cppcheck,
+
+**IB: 1.114** Create proper comments and revise old ones,
+
+**IB: 1.115** Update Cmake,
+
+**IB: 1.108** Create a docs directory with generated Doxygen files,
+
+**IB: 1.109** Create unit tests and test coverage,
+
+**IB: 1.111** URL of a 3 minute (max) video explaining the Phase 1 status of your API 
+
+**IB. 2. 201** Research how to track an object in a video
+
+**IB. 2. 202** Change "covercv" typo found all over the program
+
+**IB. 2. 203** Update UML diagram
+
+**IB. 2. 204** Implement distance tracker
+
+**IB. 2. 205** Interface Webcam
+
+**IB. 2. 206** Create Camera Class
+
+**IB. 2. 207** Make the program work on other machines 
+
+**IB. 2. 208** Create new test cases
+
+**IB. 2. 209** Update readme
+
+**IB. 2. 211** Make the program detect objects in a video
+
+**IB. 2. 212** URL of a 5 minute (max) video explaining the Phase 2
 
 ### **Task completed partially (Might contains errors due to  build method):**
 
-IB: 1.104 Setup Github CI
-IB. 2. 210 Get coverall's and build badge to work
+**IB: 1.104** Setup Github CI
+
+**IB. 2. 210** Get coverall's and build badge to work
 
 ### **Task incomplete:**
 None

@@ -1,5 +1,5 @@
 # installation of lcov for code coverage
-# sudo apt-get install -y -qq lcov
+sudo apt-get install -y -qq lcov
 
 # installation of Eigen
 sudo apt install libeigen3-dev
