@@ -1,0 +1,75 @@
+##############################################################################
+#
+# GitGub CI workflow syntax spec:
+#    https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions
+#
+# Coveralls example:
+#    https://github.com/marketplace/actions/coveralls-github-action
+#
+##############################################################################
+
+name: Build
+
+on:
+  # Triggered whenever push to the master branch
+  push:
+    branches: [ "master" ]
+
+  # Triggered whenever a pull request is created on master
+  pull_request:
+    branches: [ "master" ]
+    types: [opened]
+
+  # Allow manual trigger
+  workflow_dispatch:
+
+jobs:
+  build:
+    # Create a container of the latest Ubuntu, other values could be
+    # ubuntu-latest, ubuntu-22.04, etc.
+    runs-on: ubuntu-20.04
+    
+    steps:
+      # We want to use GitHub CI checkout version 3 for checking out the branch
+      - uses: actions/checkout@v3
+      
+      # Install some system pacakges
+      - name: Install packages
+        run: bash ${{github.workspace}}/dependencies.sh
+      # Update model 
+      - name: Update ONNX model
+        run: |
+         echo "Updating ONNX Model"
+         cd ${{github.workspace}}
+         git clone https://github.com/ultralytics/YOLOv5
+         cd YOLOv5
+         pip install -r requirements.txt
+         pip install onnx
+         wget https://github.com/ultralytics/YOLOv5/releases/download/v6.1/YOLOv5s.pt
+         python export.py --weights YOLOv5s.pt --include onnx
+         rm ${{github.workspace}}/app/models/YOLOv5s.onnx
+         mv YOLOv5s.onnx ${{github.workspace}}/app/models/.
+         cd ../
+         rm -rf ${{github.workspace}}/YOLOv5/
+         echo "ONNX Model completed"
+
+      # Run CMake to setup compilation flags
+      - name: Configure Coverage CMake 
+        run: cmake -D COVERAGE=ON -D CMAKE_BUILD_TYPE=Debug -B ${{github.workspace}}/build 
+      
+      # Compile and executables
+      - name: Build Coverage
+        working-directory: ${{github.workspace}}/build
+        run: make
+
+      # Run test suite and compute code coverage
+      - name: Run Test Coverage
+        working-directory: ${{github.workspace}}/build
+        run: make code_coverage
+      
+      # Upload coverage result to Coverage.io 
+      - name: Upload result to Coveralls.io
+        uses: coverallsapp/github-action@1.1.3
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-lcov: ${{github.workspace}}/build/coverage.info.cleaned

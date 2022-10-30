@@ -1,0 +1,26 @@
+# cpplint on app/main.cpp
+Done processing main.cpp
+
+#cpplint on app/human_object_detector.cpp
+human_object_detector.cpp:39:  Static/global string variables are not permitted.  [runtime/string] [4]
+Done processing human_object_detector.cpp
+Total errors found: 1
+
+#cpplint on include/constants.hpp
+Done processing constants.hpp
+
+#cpplint on include/object_detection.hpp
+Done processing object_detection.hpp
+
+#cpplint on test/test.cpp
+test.cpp:55:  Static/global string variables are not permitted.  [runtime/string] [4]
+test.cpp:57:  Static/global string variables are not permitted.  [runtime/string] [4]
+test.cpp:87:  Static/global string variables are not permitted.  [runtime/string] [4]
+test.cpp:89:  Static/global string variables are not permitted.  [runtime/string] [4]
+test.cpp:122:  Static/global string variables are not permitted.  [runtime/string] [4]
+test.cpp:124:  Static/global string variables are not permitted.  [runtime/string] [4]
+Done processing test.cpp
+Total errors found: 6
+
+#cpplint on test/main.cpp
+Done processing main.cpp
