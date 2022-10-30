@@ -157,10 +157,12 @@ error with the badge, it  constructed but shows build:failed
 30Error: Process completed with exit code 2.
 ```
 
-### Notes
+### **Notes**
 
-Doxyfile is found in Code/doc_directory/Doxyfile 
-Tasks IB: 1.108, IB: 1.104 and IB. 2. 210  may be implemented incorectly due to build methods 
+- Doxyfile is found in Code/doc_directory/Doxyfile 
+Tasks 
+
+- IB: 1.108, IB: 1.104 and IB. 2. 210  may be implemented incorectly due to build methods 
 
 
 ## **Overview and purpose:**
@@ -191,25 +193,35 @@ Class `Camera` contain the functions required to use the webcam, and detect a pe
 
 `Camera::getImageInput()` receives a matrix, which is the image frame received from an .png or webcam stream, depending on the value of bool live in `Camera::runLiveDetector(bool live)`.
 
-`Camera::runLiveDetector(bool live)` if bool live is true, then the program will receive inputs from a webcam stream. If bool live is false, then a .png will be the input.
+`Camera::runLiveDetector(bool live, bool test)` if bool live is true, then the program will receive inputs from a webcam stream. If bool live is false, then a .png will be the input.
 
 ### **Generate Doxygen document:**
 - **Step1:** creates a Doxyfile  
-Doxygen -g  
+```
+doxygen -g
+```  
 
 - **Step 2:** Edit the Doxyfile (INPUT and PROJECT_NAME)  
 
 - **Step 3:** To generate html and latex folder  
 doxygen ./Doxyfile. (_Once thats done, two folders will be created html and latex, the html folder has index.html which will have the doxygen data_)  
 
-- **Step 4:** INPUT parameter in Doxyfile is the files you want to run doxygen on PROJECT_NAME parameter is the name of the title  
+- **Step 4:** INPUT parameter in Doxyfile is the files you want to run doxygen on PROJECT_NAME parameter is the name of the title
+
+- **Step 5:**: Open the Doxygen html file.
+```
+cd Docs/html
+firefox index.html
+```
 
 ### **Dependencies:**
-- opencv-4.x
-- eigen
-- lcov
-- YOLOv5
-- pytorch 1.11 
+| Name | Version |
+| :---          |    :---:    |
+|OpenCV | 4.x |
+|lcov | >1.13|
+|pytorch | 1.11|
+
+
 
 OpenCV:
 ```
@@ -252,24 +264,34 @@ python3 export.py --weights YOLOv5s.pt --include onnx
 ```
 
 ### **Steps to Run test:**
-./test/cpp-test  
-
-### Steps to Build and Run Demo: 
+```
+./test/cpp-test 
+```
+ 
+### **Steps to Build and Run Demo:** 
 ```
 # Create build directory and switch into it
 mkdir -p build && cd build
 
-# Configure
-cmake  ../opencv
+# to run without coverage
+cmake ..
+make
 
-#Build
-cmake --build .
+# App run
+./app/shell-app
 
-# In /ENPM808X---Midterm-Project/app/main.cpp, cam.runLiveDetector(true) will run object detection the webcam.
-# cam.runLiveDetector(false) will object detection for a sample .png in place in /ENPM808X---Midterm-Project/app/ 
+# Test run
+./test/cpp-test
 
-cd <directory_of_repo>
-bash run_detector.sh
+# to run with coverage
+cmake -D COVERAGE=ON -D CMAKE_BUILD_TYPE=Debug ../
+make
+# to make code_coverage
+make code_coverage
+
+# In /ENPM808X---Midterm-Project/app/main.cpp, cam.runLiveDetector(true, false) will run object detection the webcam.
+# cam.runLiveDetector(false, false) will object detection for a sample .png in place in /ENPM808X---Midterm-Project/app/ 
+
 ```
 
 
