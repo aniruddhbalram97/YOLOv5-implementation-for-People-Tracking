@@ -22,10 +22,10 @@
 **Design Keeper**-Mayank Sharma
 
 ## **Introduction**
-Human (N>=1) obstacle detector and tracker based on C++ and OpenCV that employs a computer vision algorithm for location and categorization of humans(N>=1) in the picture.
-We are seeking to create this tracker utilizing a monocular camera, directly usable in a robot’s reference frame according to the need specifications supplied to us by ACME robotics.
+Human (N>=1) obstacle detector and tracker based on C++ and OpenCV that employ a computer vision algorithm for location and categorization of human(N>=1) in the picture.
+We are seeking to create this tracker utilizing a monocular camera, directly usable in a robot’s reference frame according to the need specifications supplied to us by ACME robotics .
 
-For human recognition and tracking, we will use the robust YOLO neural network model trained on the COCO - 2017 dataset, which is one of the most accurate real-time object detection techniques. 
+For human recognition and tracking, we will use the robust YOLOv3 neural network model trained on the COCO dataset, which is one of the most accurate real-time object detection techniques. 
 
 ## **Diagrams**
 ### **UML Class Diagram:**
@@ -35,22 +35,6 @@ For human recognition and tracking, we will use the robust YOLO neural network m
 
 ![alt text](./UML_Diagram/Updated_UMLV2/Activity_Diagram.png)
 
-## **Tasks complete**
-
-- IB: 1.101 Get preprocessing working
-- IB: 1.102 Get postprocessing working
-- IB: 1.103 Setup coverCV
-- IB: 1.105 Create an iteration development branch/ development branch
-- IB: 1.106 Select and add a software license as a file named LICENSE
-- IB: 1.107 Update UML
-- IB: 1.110 Update readme
-- IB: 1.112 Create classes for program
-- IB: 1.113 Implement cpplint and cppcheck
-- IB: 1.114 Create proper comments and revise old ones
-- IB: 1.115 Update Cmake
-- IB: 1.108 Create a docs directory with generated Doxygen files, 
-- IB: 1.109 Create unit tests and test coverage, 
-- IB: 1.111 URL of a 3 minute (max) video explaining the Phase 1 status of your API 
 
 ## **Results:**
 The application currently performs well on single images. For demo purposes, we have used image from The Beatles album-art "The Abbey Road":
@@ -65,11 +49,42 @@ The application predicts the main 4 humans as well as the one behind (barely-vis
 
 ![Output](https://user-images.githubusercontent.com/106330112/196838392-56e96d2a-b8b9-4585-b071-a476316717a1.jpeg)
 
+## **Tasks complete**
+
+IB: 1.101 Get preprocessing working, 
+IB: 1.102 Get postprocessing working,
+IB: 1.103 Setup coverCV, 
+IB: 1.105 Create an iteration development branch/ development branch, 
+IB: 1.106 Select and add a software license as a file named LICENSE, 
+IB: 1.107 Update UML,
+IB: 1.110 Update readme, 
+IB: 1.112 Create classes for program, 
+IB: 1.113 Implement cpplint and cppcheck, 
+IB: 1.114 Create proper comments and revise old ones, 
+IB: 1.115 Update Cmake, 
+IB: 1.108 Create a docs directory with generated Doxygen files, 
+IB: 1.109 Create unit tests and test coverage, 
+IB: 1.111 URL of a 3 minute (max) video explaining the Phase 1 status of your API 
+
+IB. 2. 201 Research how to track an object in a video
+IB. 2. 202 Change "covercv" typo found all over the program
+IB. 2. 203 Update UML diagram
+IB. 2. 204 Implement distance tracker
+IB. 2. 205 Interface Webcam
+IB. 2. 206 Create Camera Class
+IB. 2. 207 Make the program work on other machines 
+IB. 2. 208 Create new test cases
+IB. 2. 209 Update readme
+IB. 2. 211 Make the program detect objects in a video
+IB. 2. 212 URL of a 5 minute (max) video explaining the Phase 2
+
 ### **Task completed partially (Might contains errors due to  build method):**
 
-- IB: 1.104 Setup Github CI
+IB: 1.104 Setup Github CI
+IB. 2. 210 Get coverall's and build badge to work
+
 ### **Task incomplete:**
--  
+None
 
 ### **Spreadsheet and Sprint Meeting Document Link**
 
@@ -81,9 +96,12 @@ The application predicts the main 4 humans as well as the one behind (barely-vis
 
 https://drive.google.com/file/d/1SrriQnXhLH50-QhWuF40HRacuLYLgIPe/view?usp=sharing
 
+### **Phase 2 Status video:**
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 ## **Known Issues/Bugs:**
 
-- Error with the badge, it  constructed but shows build:failed
+error with the badge, it  constructed but shows build:failed
 
 ```
 [100%] Resetting code coverage counters to zero.
@@ -115,15 +133,11 @@ https://drive.google.com/file/d/1SrriQnXhLH50-QhWuF40HRacuLYLgIPe/view?usp=shari
 30Error: Process completed with exit code 2.
 ```
 
-- Two team members cannot build the program. Might have to do something with incorrect installation
-- Additional cpplint errors are mentioned in Results/cpplint.txt
+### Notes
 
+Doxyfile is found in Code/doc_directory/Doxyfile 
+Tasks IB: 1.108, IB: 1.104 and IB. 2. 210  may be implemented incorectly due to build methods 
 
-## **Notes**
-
-- Doxyfile is found in Code/doc_directory/Doxyfile
-
-- Tasks IB: 1.108 and IB: 1.104 may be implemented incorrectly due to build methods
 
 ## **Overview and purpose:**
 This program allows an image to be fed into the program, creating bounding boxes around every detected human. The goal is to use this program and make a human tracker out of it, with the input being a video feed. 
@@ -146,53 +160,18 @@ Derived from BlobGenerator by inheritance, the `HumanObjectDetector` class is us
 
 `HumanObjectDetector::applyNMSAndAppendRectanglesToImage()` applies Non Maximal Supression and eliminates the redundant overlapping bounding boxes.
 
-### **Dependencies:**
-- opencv-4.x
-- eigen
-- lcov
-- YOLOv5
-- pytorch 1.11
+For phase 2, there are new classes and functions. 
+`HumanObjectDetector::objectDetectorModel()` Combined post and pre-processing methods 
 
+Class `Camera` contain the functions required to use the webcam, and detect a person 
 
-Install opencv and opencv_contrib:  
-```
-# Install minimal prerequisites (Ubuntu 18.04 as reference)
-sudo apt update && sudo apt install -y cmake g++ wget unzip
-# Download and unpack sources
-wget -O opencv.zip https://github.com/opencv/opencv/archive/4.x.zip
-wget -O opencv_contrib.zip https://github.com/opencv/opencv_contrib/archive/4.x.zip
-unzip opencv.zip
-unzip opencv_contrib.zip
-# Create build directory and switch into it
-mkdir -p build && cd build
-# Configure
-cmake -DOPENCV_EXTRA_MODULES_PATH=../opencv_contrib-4.x/modules ../opencv-4.x
-# Build
-cmake --build .
-```
-Install YOLOv5 and move model folder:  
-```
-# Clone the repository. 
-git clone https://github.com/ultralytics/YOLOv5
- 
-cd YOLOv5 # Install dependencies.
-pip install -r requirements.txt
-pip install onnx
- 
-# Download .pt model.
-wget https://github.com/ultralytics/YOLOv5/releases/download/v6.1/YOLOv5s.pt
- 
-!python3 export.py --weights YOLOv5s.pt --include onnx
- 
-#Now move the "models"  from YOLOv5s to the program's repository and replace /app/models 
-```
+`Camera::getImageInput()` receives a matrix, which is the image frame received from an .png or webcam stream, depending on the value of bool live in `Camera::runLiveDetector(bool live)`.
 
+`Camera::runLiveDetector(bool live)` if bool live is true, then the program will receive inputs from a webcam stream. If bool live is false, then a .png will be the input.
 
 ### **Generate Doxygen document:**
 - **Step1:** creates a Doxyfile  
-```
-Doxygen -g
-```  
+Doxygen -g  
 
 - **Step 2:** Edit the Doxyfile (INPUT and PROJECT_NAME)  
 
@@ -201,19 +180,72 @@ doxygen ./Doxyfile. (_Once thats done, two folders will be created html and late
 
 - **Step 4:** INPUT parameter in Doxyfile is the files you want to run doxygen on PROJECT_NAME parameter is the name of the title  
 
+### **Dependencies:**
+- opencv-4.x
+- eigen
+- lcov
+- YOLOv5
+- pytorch 1.11 
+
+OpenCV:
+```
+# Install minimal prerequisites (Ubuntu 18.04 as reference)
+sudo apt update && sudo apt install -y cmake g++ wget unzip
+
+# Download and unpack sources
+wget -O opencv.zip https://github.com/opencv/opencv/archive/4.x.zip
+wget -O opencv_contrib.zip https://github.com/opencv/opencv_contrib/archive/4.x.zip
+unzip opencv.zip
+unzip opencv_contrib.zip
+
+# Create build directory and switch into it
+mkdir -p build && cd build
+
+# Configure
+cmake -DOPENCV_EXTRA_MODULES_PATH=../opencv_contrib-4.x/modules ../opencv-4.x
+# Build
+
+cmake --build .
+```
+YOLOv5:
+
+```
+# Clone the repository. 
+git clone https://github.com/ultralytics/YOLOv5
+
+# Install dependencies.
+cd YOLOv5 
+pip install -r requirements.txt
+pip install onnx
+ 
+# Download .pt model.
+wget https://github.com/ultralytics/YOLOv5/releases/download/v6.1/YOLOv5s.pt
+ 
+python3 export.py --weights YOLOv5s.pt --include onnx
+
+#in /YOLOv5, move /models into ENPM808X---Midterm-Project/app/
+
+```
+
 ### **Steps to Run test:**
+./test/cpp-test  
+
+### Steps to Build and Run Demo: 
 ```
-cd <directory_of_repo>/
+# Create build directory and switch into it
+mkdir -p build && cd build
 
-# Create build directory and switch to it
-mkdir build && cmake .. && make
+# Configure
+cmake  ../opencv
 
-# Run test file 'cpp-test' within test folder
-./test/cpp-test
-```  
+#Build
+cmake --build .
 
-### **Steps to Build and Run Demo:** 
-```
+# In /ENPM808X---Midterm-Project/app/main.cpp, cam.runLiveDetector(true) will run object detection the webcam.
+# cam.runLiveDetector(false) will object detection for a sample .png in place in /ENPM808X---Midterm-Project/app/ 
+
 cd <directory_of_repo>
 bash run_detector.sh
 ```
+
+
