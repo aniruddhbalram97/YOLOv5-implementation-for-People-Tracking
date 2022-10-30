@@ -105,8 +105,7 @@ class HumanObjectDetector: public BlobGenerator {
         void robotCoordinateConversion(const cv::Rect &bbox, int human_id);
         cv::Mat objectDetectorModel(cv::Mat image_in,
         cv::dnn::Net yolo_model,
-        const std::vector<std::string> &class_list,
-        const std::string &file_name);
+        const std::vector<std::string> &class_list);
         std::vector<int> getNMSID() {
               return id_nms;
         }

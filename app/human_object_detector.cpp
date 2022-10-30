@@ -164,7 +164,7 @@ const std::vector<std::string> &name_of_class) {
     ODConstants::THRES_NMS, id_nms);
     std::cout<< "Number of Bounding boxes after NMS: "
     << id_nms.size() << std::endl;
-    int human_id = 1; 
+    int human_id = 1;
     for (int i = 0; i < static_cast<int>(id_nms.size()); i++) {
         if (name_of_class[ids[id_nms[i]]] == "person") {
         /// gives each bounding-box
@@ -180,7 +180,7 @@ const std::vector<std::string> &name_of_class) {
         cv::Point(posLeft + width_of_box, posTop + height_of_box),
         ODConstants::B, 2*ODConstants::F_THICKNESS);
         std::string label_value = name_of_class[ids[id_nms[i]]] +
-        cv::format("%.1f", confidence_values[id_nms[i]]) + 
+        cv::format("%.1f", confidence_values[id_nms[i]]) +
         " id:" + std::to_string(human_id);
         labelBox(image_in, label_value, posTop, posLeft);
         human_id++;
@@ -194,18 +194,17 @@ robotCoordinateConversion(const cv::Rect &bbox, int human_id) {
 double depth = focal_length * (avg_height_of_person/bbox.height);
 double pixel_to_cm_ratio = avg_height_of_person/bbox.height;
 std::cout << "The Robot Coordinates" << std::endl;
-std::cout << "The person is between with ID:" << human_id<< "(" 
-<< bbox.x * pixel_to_cm_ratio << "," << bbox.y * pixel_to_cm_ratio 
-<< "," << depth * pixel_to_cm_ratio << ") And (" 
-<< (bbox.x + bbox.width) * pixel_to_cm_ratio << "," 
-<< (bbox.y + bbox.height) * pixel_to_cm_ratio << "," 
-<< depth * pixel_to_cm_ratio << ")\n";  
+std::cout << "The person is between with ID:" << human_id<< "("
+<< bbox.x * pixel_to_cm_ratio << "," << bbox.y * pixel_to_cm_ratio
+<< "," << depth << ") And ("
+<< (bbox.x + bbox.width) * pixel_to_cm_ratio << ","
+<< (bbox.y + bbox.height) * pixel_to_cm_ratio << ","
+<< depth << ")\n";
 }
 cv::Mat HumanObjectDetector::
 objectDetectorModel(cv::Mat image_in,
 cv::dnn::Net yolo_model,
-const std::vector<std::string> &class_list,
-const std::string &file_name) {
+const std::vector<std::string> &class_list) {
 BlobGenerator Blob;
 Blob.generateBlobFromImage(image_in);
 cv::Mat blob = Blob.getBlob();
@@ -250,18 +249,19 @@ std::cout << "Cannot Open Camera";
 while (true) {
     cap >> image_in;
     img = HOD.objectDetectorModel(image_in, yolo_model,
-    class_list, file_name);
+    class_list);
+    if (!test) {
     cv::imshow("Object Detection", img);
     cv::waitKey(25);
-    
+    }
 }
 } else {
     image_in = cv::imread("./../app/traffic.jpg", cv::IMREAD_COLOR);
     std:: cout << "Test Image Dimensions"
     << image_in.size[0];
     img = HOD.objectDetectorModel(image_in, yolo_model,
-    class_list, file_name);
-    if(!test) {
+    class_list);
+    if (!test) {
     cv::imshow("Object Detection", img);
     cv::waitKey(0);
     }
