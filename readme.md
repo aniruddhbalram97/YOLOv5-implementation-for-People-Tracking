@@ -1,4 +1,4 @@
-# **Midterm - Human Object Detection**
+# **YOLOv5 Implementation for People Tracking**
 [![Build Status](https://github.com/aniruddhbalram97/ENPM808X---Midterm-Project/actions/workflows/build_and_coveralls.yml/badge.svg)](https://github.com/aniruddhbalram97/ENPM808X-mid_term_test/actions/workflows/build_and_coveralls.yml)
 
 [![Coverage Status](https://coveralls.io/repos/github/aniruddhbalram97/ENPM808X---Midterm-Project/badge.svg?branch=master)](https://coveralls.io/github.com/aniruddhbalram97/ENPM808X-mid_term_test/?branch=master)
